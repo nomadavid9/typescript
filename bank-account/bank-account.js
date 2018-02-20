@@ -14,6 +14,9 @@ var BankAccount = /** @class */ (function () {
         return "Original Balance: $" + (this.balance - amount) + ".\tYou have made a deposit of:\t$" + amount + ".\tNew balance: $" + this.balance + ".";
     };
     BankAccount.prototype.withdraw = function (amount) {
+        if (this.balance < amount) {
+            return "Insufficient Funds.";
+        }
         this.transactions.push(" - $" + amount + " ");
         this.balance -= amount;
         return "Original Balance: $" + (this.balance + amount) + ".\tYou have made a withdrawl of:\t$" + amount + ".\tNew balance: $" + this.balance + ".";
@@ -28,3 +31,4 @@ console.log(navyFed.deposit(100));
 console.log(navyFed.withdraw(20));
 console.log(navyFed.transactionsHistory());
 console.log(navyFed.getCurrentBal());
+console.log(navyFed.withdraw(1000));
