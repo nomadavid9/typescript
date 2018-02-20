@@ -9,9 +9,9 @@ class BankAccount {
         this.transactions = transactions
     }
     
-    getCurrentBal() :any[] {
-        this.transactions.push("current bal: " + this.balance);
-        return this.transactions
+    getCurrentBal() :number {
+        this.transactions.push("Current Bal: " + this.balance);
+        return this.balance
     }
     
     deposit(amount: number) :number {
@@ -19,9 +19,13 @@ class BankAccount {
         return this.balance += amount;
     }
     
-    withdraw(amount: number) :number {
+    withdraw(amount: number) :string {
         this.transactions.push(-amount)
-        return this.balance -= amount;
+        return "Original Balance: " + this.balance + ". You have made a withdrawel of: " + this.balance -= amount + ". New balance: " + this.balance;
+    }
+    
+    transactionsHistory() :any[] {
+        return this.transactions
     }
 }
 
@@ -29,3 +33,4 @@ let navyFed = new BankAccount("David", 500)
 console.log(navyFed.deposit(100));
 console.log(navyFed.withdraw(20));
 console.log(navyFed.getCurrentBal());
+console.log(navyFed.transactionsHistory());
