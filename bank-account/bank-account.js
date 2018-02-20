@@ -6,20 +6,20 @@ var BankAccount = /** @class */ (function () {
         this.transactions = transactions;
     }
     BankAccount.prototype.getCurrentBal = function () {
-        return "Current Balance: " + this.balance + ".";
+        return "Current Balance: $" + this.balance + ".";
     };
     BankAccount.prototype.deposit = function (amount) {
-        this.transactions.push("+" + amount);
+        this.transactions.push(" + $" + amount + " ");
         this.balance += amount;
-        return "Original Balance: " + (this.balance - amount) + ". You have made a deposit of: " + amount + ". New balance: " + this.balance + ".";
+        return "Original Balance: $" + (this.balance - amount) + ".\tYou have made a deposit of:\t$" + amount + ".\tNew balance: $" + this.balance + ".";
     };
     BankAccount.prototype.withdraw = function (amount) {
-        this.transactions.push(-amount);
+        this.transactions.push(" - $" + amount + " ");
         this.balance -= amount;
-        return "Original Balance: " + (this.balance + amount) + ". You have made a withdrawl of: " + amount + ". New balance: " + this.balance + ".";
+        return "Original Balance: $" + (this.balance + amount) + ".\tYou have made a withdrawl of:\t$" + amount + ".\tNew balance: $" + this.balance + ".";
     };
     BankAccount.prototype.transactionsHistory = function () {
-        return this.transactions;
+        return "Transaction History: [" + this.transactions + "]";
     };
     return BankAccount;
 }());
